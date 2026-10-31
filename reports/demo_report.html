@@ -1,0 +1,596 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Healing Demo Report</title><style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171c;--muted:#5d6672;--line:#e3e6ea;--accent:#1d5fd1;
+--ok:#127a43;--ok-bg:#e2f4ea;--warn:#8a5a00;--warn-bg:#fdf1d8;--bad:#b3261e;--bad-bg:#fbe4e2;
+--info:#1d5fd1;--info-bg:#e4edfc;--grey:#5d6672;--grey-bg:#eceff2}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1318;--card:#171c23;--ink:#e8ebef;--muted:#9aa4b0;
+--line:#272e38;--accent:#8ab4ff;--ok:#5fd493;--ok-bg:#12301f;--warn:#f0c15a;--warn-bg:#352a0f;
+--bad:#ff8a80;--bad-bg:#3a1714;--info:#8ab4ff;--info-bg:#15264a;--grey:#9aa4b0;--grey-bg:#222931}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+padding:24px 20px 64px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:20px;margin:36px 0 12px}
+h3{font-size:15px;margin:22px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.sub{color:var(--muted);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tile .v{font-size:28px;font-weight:700;line-height:1.1}
+.tile .l{color:var(--muted);font-size:13px;margin-top:4px}
+.tile .n{color:var(--muted);font-size:12px;margin-top:2px}
+.tile.good .v{color:var(--ok)}.tile.warn .v{color:var(--warn)}.tile.bad .v{color:var(--bad)}.tile.info .v{color:var(--info)}
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;counter-reset:s}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative}
+.stage:before{counter-increment:s;content:counter(s);position:absolute;top:12px;right:14px;width:24px;height:24px;
+border-radius:50%;background:var(--info-bg);color:var(--info);font-weight:700;font-size:13px;display:grid;place-items:center}
+.stage b{display:block;margin-bottom:6px;padding-right:30px}
+.stage ul{margin:0;padding-left:18px;color:var(--muted);font-size:13.5px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--grey-bg);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+code{font:12.5px ui-monospace,Consolas,monospace;background:var(--grey-bg);padding:1px 6px;border-radius:5px;white-space:nowrap}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.s-unchanged{background:var(--grey-bg);color:var(--grey)}
+.s-healed,.s-resolved{background:var(--ok-bg);color:var(--ok)}
+.s-needs_review{background:var(--warn-bg);color:var(--warn)}
+.s-failed{background:var(--bad-bg);color:var(--bad)}
+.bar{display:inline-block;width:70px;height:7px;border-radius:4px;background:var(--grey-bg);vertical-align:middle;margin-right:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok)}
+.bar.mid i{background:var(--warn)}.bar.low i{background:var(--bad)}
+.chk.good{color:var(--ok);font-weight:700}.chk.bad{color:var(--bad);font-weight:700}
+.muted{color:var(--muted)}
+.note{border-left:4px solid var(--info);background:var(--info-bg);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+.note.warn{border-color:var(--warn);background:var(--warn-bg)}
+.note.good{border-color:var(--ok);background:var(--ok-bg)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.flow span.step{padding:4px 10px;border-radius:8px;background:var(--grey-bg);font-size:13px}
+details{margin:14px 0}
+summary{cursor:pointer;color:var(--accent)}
+pre{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12px}
+.badge{display:inline-block;padding:2px 10px;border-radius:8px;background:var(--info-bg);color:var(--info);font-size:12px;font-weight:600;margin-left:8px;vertical-align:middle}
+.cmp td.diff{background:var(--warn-bg)}
+@media (max-width:600px){body{padding:16px 14px 48px}h1{font-size:22px}}
+</style></head><body><div class="wrap"><h1>Self-healing demo report</h1><p class="sub">Sample app: v1 is the baseline, v2 is the same app with only the id attributes renamed. Each run seeds a fresh repository from v1, then heals against v2.</p><div class="flow"><span class="step">1 stored id</span>&rarr;<span class="step">2 counter-style id</span>&rarr;<span class="step">3 fingerprint scoring</span>&rarr;<span class="step">4 local LLM (only if ambiguous)</span>&rarr;<span class="step">5 fail with candidates</span></div><div class="note">Run <code>python run_demo.py --llm</code> as well to add a side-by-side comparison.</div><h2>Deterministic only<span class="badge">2026-11-01 01:47:02</span></h2><div class="tiles"><div class="tile "><div class="v">27</div><div class="l">elements checked</div></div><div class="tile good"><div class="v">26</div><div class="l">healed without AI</div><div class="n">auto-applied</div></div><div class="tile warn"><div class="v">1</div><div class="l">needs review</div><div class="n">queued for approval</div></div><div class="tile "><div class="v">0</div><div class="l">failed</div></div><div class="tile good"><div class="v">27/27</div><div class="l">correct vs. ground truth</div><div class="n">sample app knows the answer</div></div><div class="tile info"><div class="v">0</div><div class="l">LLM calls</div><div class="n">disabled</div></div><div class="tile info"><div class="v">0</div><div class="l">LLM tokens</div><div class="n">prompt + reply</div></div><div class="tile "><div class="v">56.5s</div><div class="l">duration</div><div class="n">healing pass</div></div></div><h3>What happened at each stage</h3><div class="stages"><div class="stage"><b>Developers rename ids</b><ul><li>27 tracked ids renamed v1 &rarr; v2</li><li>only the id attribute changed; text, class, structure did not</li></ul></div><div class="stage"><b>Seed from v1</b><ul><li>27 elements fingerprinted</li><li>pages: login (5), register (6), dashboard (5), settings (11)</li><li>every element starts at version 1</li></ul></div><div class="stage"><b>Run tests on v2</b><ul><li>25 auto-healed, 1 counter-style resolved</li><li>1 sent to review, 0 failed</li><li>LLM not used</li></ul></div><div class="stage"><b>Repository after the run</b><ul><li>25 elements moved to a new version</li><li>1 pending proposals waiting for approval</li><li>next: review.py approve, then rebaseline.py</li></ul></div></div><h3>Element by element</h3><div class="scroll"><table><thead><tr><th>Element</th><th>Seeded id (v1)</th><th>Developers changed it to</th><th>Framework chose</th><th>Result</th><th>How</th><th>Confidence</th><th>Version</th><th>Time</th><th>Reason</th></tr></thead><tbody><tr><td><b>login.username</b></td><td><code>login-username</code></td><td><code>text_user</code></td><td><code>text_user</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2124 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>login.password</b></td><td><code>login-password</code></td><td><code>text_pass</code></td><td><code>text_pass</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2062 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>login.button</b></td><td><code>login-btn</code></td><td><code>btn-signin</code></td><td><code>btn-signin</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2092 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>login.forgot</b></td><td><code>login-forgot</code></td><td><code>lnk-reset-pw</code></td><td><code>lnk-reset-pw</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2097 ms</td><td class='muted'>score 100.0, runner-up 36.8, discriminator misses 0</td></tr><tr><td><b>login.message</b></td><td><code>login-msg</code></td><td><code>status-banner</code></td><td><code>status-banner</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2118 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>register.name</b></td><td><code>reg-fullname</code></td><td><code>signup-name</code></td><td><code>signup-name</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2055 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>register.email</b></td><td><code>reg-email</code></td><td><code>signup-email</code></td><td><code>signup-email</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2061 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>register.password</b></td><td><code>reg-password</code></td><td><code>signup-pass</code></td><td><code>signup-pass</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2064 ms</td><td class='muted'>score 100.0, runner-up 67.2, discriminator misses 0</td></tr><tr><td><b>register.confirm</b></td><td><code>reg-confirm</code></td><td><code>signup-pass2</code></td><td><code>signup-pass2</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2052 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>register.terms</b></td><td><code>reg-terms</code></td><td><code>agree-checkbox</code></td><td><code>agree-checkbox</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2096 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>register.submit</b></td><td><code>reg-submit</code></td><td><code>btn-create-account</code></td><td><code>btn-create-account</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2093 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>dashboard.title</b></td><td><code>dash-title</code></td><td><code>page-heading</code></td><td><code>page-heading</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2102 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>dashboard.edit_profile</b></td><td><code>edit-profile</code></td><td><code>btn-edit-1</code></td><td><code>btn-edit-1</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2103 ms</td><td class='muted'>score 100.0, runner-up 79.7, discriminator misses 0</td></tr><tr><td><b>dashboard.edit_billing</b></td><td><code>edit-billing</code></td><td><code>btn-edit-2</code></td><td><code>btn-edit-2</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2114 ms</td><td class='muted'>score 100.0, runner-up 46.4, discriminator misses 0</td></tr><tr><td><b>dashboard.country</b></td><td><code>react-select-3-input</code></td><td><code>react-select-9-input</code></td><td><code>react-select-9-input</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-resolved">Resolved (counter id)</span></td><td>Counter-style id</td><td><span class="bar "><i style="width:99%"></i></span>99</td><td>v1</td><td>2117 ms</td><td class='muted'>counter-style id</td></tr><tr><td><b>dashboard.logout</b></td><td><code>logout-btn</code></td><td><code>btn-signout</code></td><td><code>btn-signout</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2109 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>settings.home</b></td><td><code>nav-home</code></td><td><code>top-home-link</code></td><td><code>top-home-link</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2119 ms</td><td class='muted'>score 100.0, runner-up 57.6, discriminator misses 0</td></tr><tr><td><b>settings.register</b></td><td><code>nav-register</code></td><td><code>top-register-link</code></td><td><code>top-register-link</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2085 ms</td><td class='muted'>score 100.0, runner-up 21.2, discriminator misses 0</td></tr><tr><td><b>settings.email_alerts</b></td><td><code>notify-email</code></td><td><code>chk-email-alerts</code></td><td><code>chk-email-alerts</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2082 ms</td><td class='muted'>score 100.0, runner-up 78.0, discriminator misses 0</td></tr><tr><td><b>settings.sms_alerts</b></td><td><code>notify-sms</code></td><td><code>chk-sms-alerts</code></td><td><code>chk-sms-alerts</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2070 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>settings.save</b></td><td><code>notif-save</code></td><td><code>btn-save-notifications</code></td><td><code>btn-save-notifications</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2062 ms</td><td class='muted'>score 100.0, runner-up 77.2, discriminator misses 0</td></tr><tr><td><b>settings.current_password</b></td><td><code>sec-current-password</code></td><td><code>pw-old</code></td><td><code>pw-old</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2072 ms</td><td class='muted'>score 100.0, runner-up 68.1, discriminator misses 0</td></tr><tr><td><b>settings.new_password</b></td><td><code>sec-new-password</code></td><td><code>pw-new</code></td><td><code>pw-new</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2096 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>settings.security_save</b></td><td><code>sec-save</code></td><td><code>btn-save-security</code></td><td><code>btn-save-security</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2096 ms</td><td class='muted'>score 100.0, runner-up 51.1, discriminator misses 0</td></tr><tr><td><b>settings.more_actions</b></td><td><code>account-menu-btn</code></td><td><code>more-actions-toggle</code></td><td><code>more-actions-toggle</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2106 ms</td><td class='muted'>score 100.0, runner-up 54.2, discriminator misses 0</td></tr><tr><td><b>settings.export_data</b></td><td><code>export-data</code></td><td><code>lnk-export</code></td><td><code>lnk-export</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-healed">Auto-healed</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 &rarr; v2</td><td>2097 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0</td></tr><tr><td><b>settings.delete_account</b></td><td><code>delete-account</code></td><td><code>btn-remove-account</code></td><td><code>btn-remove-account</code> <span class="chk good">&#10003;</span></td><td><span class="pill s-needs_review">Needs review</span></td><td>Fingerprint score</td><td><span class="bar "><i style="width:100%"></i></span>100</td><td>v1 <span class="muted">(proposal, not applied)</span></td><td>2084 ms</td><td class='muted'>score 100.0, runner-up 0.0, discriminator misses 0; needs approval (on the deny-list)</td></tr></tbody></table></div><details><summary>Raw run data (JSON)</summary><pre>{
+  &quot;mode&quot;: &quot;no_llm&quot;,
+  &quot;label&quot;: &quot;Deterministic only&quot;,
+  &quot;started_at&quot;: &quot;2026-11-01 01:47:02&quot;,
+  &quot;duration_s&quot;: 56.55,
+  &quot;seed&quot;: {
+    &quot;pages&quot;: {
+      &quot;login&quot;: 5,
+      &quot;register&quot;: 6,
+      &quot;dashboard&quot;: 5,
+      &quot;settings&quot;: 11
+    },
+    &quot;elements&quot;: 27,
+    &quot;skipped&quot;: []
+  },
+  &quot;dev_changes&quot;: [
+    {
+      &quot;key&quot;: &quot;login.username&quot;,
+      &quot;old_id&quot;: &quot;login-username&quot;,
+      &quot;expected_id&quot;: &quot;text_user&quot;
+    },
+    {
+      &quot;key&quot;: &quot;login.password&quot;,
+      &quot;old_id&quot;: &quot;login-password&quot;,
+      &quot;expected_id&quot;: &quot;text_pass&quot;
+    },
+    {
+      &quot;key&quot;: &quot;login.button&quot;,
+      &quot;old_id&quot;: &quot;login-btn&quot;,
+      &quot;expected_id&quot;: &quot;btn-signin&quot;
+    },
+    {
+      &quot;key&quot;: &quot;login.forgot&quot;,
+      &quot;old_id&quot;: &quot;login-forgot&quot;,
+      &quot;expected_id&quot;: &quot;lnk-reset-pw&quot;
+    },
+    {
+      &quot;key&quot;: &quot;login.message&quot;,
+      &quot;old_id&quot;: &quot;login-msg&quot;,
+      &quot;expected_id&quot;: &quot;status-banner&quot;
+    },
+    {
+      &quot;key&quot;: &quot;register.name&quot;,
+      &quot;old_id&quot;: &quot;reg-fullname&quot;,
+      &quot;expected_id&quot;: &quot;signup-name&quot;
+    },
+    {
+      &quot;key&quot;: &quot;register.email&quot;,
+      &quot;old_id&quot;: &quot;reg-email&quot;,
+      &quot;expected_id&quot;: &quot;signup-email&quot;
+    },
+    {
+      &quot;key&quot;: &quot;register.password&quot;,
+      &quot;old_id&quot;: &quot;reg-password&quot;,
+      &quot;expected_id&quot;: &quot;signup-pass&quot;
+    },
+    {
+      &quot;key&quot;: &quot;register.confirm&quot;,
+      &quot;old_id&quot;: &quot;reg-confirm&quot;,
+      &quot;expected_id&quot;: &quot;signup-pass2&quot;
+    },
+    {
+      &quot;key&quot;: &quot;register.terms&quot;,
+      &quot;old_id&quot;: &quot;reg-terms&quot;,
+      &quot;expected_id&quot;: &quot;agree-checkbox&quot;
+    },
+    {
+      &quot;key&quot;: &quot;register.submit&quot;,
+      &quot;old_id&quot;: &quot;reg-submit&quot;,
+      &quot;expected_id&quot;: &quot;btn-create-account&quot;
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.title&quot;,
+      &quot;old_id&quot;: &quot;dash-title&quot;,
+      &quot;expected_id&quot;: &quot;page-heading&quot;
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.edit_profile&quot;,
+      &quot;old_id&quot;: &quot;edit-profile&quot;,
+      &quot;expected_id&quot;: &quot;btn-edit-1&quot;
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.edit_billing&quot;,
+      &quot;old_id&quot;: &quot;edit-billing&quot;,
+      &quot;expected_id&quot;: &quot;btn-edit-2&quot;
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.country&quot;,
+      &quot;old_id&quot;: &quot;react-select-3-input&quot;,
+      &quot;expected_id&quot;: &quot;react-select-9-input&quot;
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.logout&quot;,
+      &quot;old_id&quot;: &quot;logout-btn&quot;,
+      &quot;expected_id&quot;: &quot;btn-signout&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.home&quot;,
+      &quot;old_id&quot;: &quot;nav-home&quot;,
+      &quot;expected_id&quot;: &quot;top-home-link&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.register&quot;,
+      &quot;old_id&quot;: &quot;nav-register&quot;,
+      &quot;expected_id&quot;: &quot;top-register-link&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.email_alerts&quot;,
+      &quot;old_id&quot;: &quot;notify-email&quot;,
+      &quot;expected_id&quot;: &quot;chk-email-alerts&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.sms_alerts&quot;,
+      &quot;old_id&quot;: &quot;notify-sms&quot;,
+      &quot;expected_id&quot;: &quot;chk-sms-alerts&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.save&quot;,
+      &quot;old_id&quot;: &quot;notif-save&quot;,
+      &quot;expected_id&quot;: &quot;btn-save-notifications&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.current_password&quot;,
+      &quot;old_id&quot;: &quot;sec-current-password&quot;,
+      &quot;expected_id&quot;: &quot;pw-old&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.new_password&quot;,
+      &quot;old_id&quot;: &quot;sec-new-password&quot;,
+      &quot;expected_id&quot;: &quot;pw-new&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.security_save&quot;,
+      &quot;old_id&quot;: &quot;sec-save&quot;,
+      &quot;expected_id&quot;: &quot;btn-save-security&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.more_actions&quot;,
+      &quot;old_id&quot;: &quot;account-menu-btn&quot;,
+      &quot;expected_id&quot;: &quot;more-actions-toggle&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.export_data&quot;,
+      &quot;old_id&quot;: &quot;export-data&quot;,
+      &quot;expected_id&quot;: &quot;lnk-export&quot;
+    },
+    {
+      &quot;key&quot;: &quot;settings.delete_account&quot;,
+      &quot;old_id&quot;: &quot;delete-account&quot;,
+      &quot;expected_id&quot;: &quot;btn-remove-account&quot;
+    }
+  ],
+  &quot;rows&quot;: [
+    {
+      &quot;key&quot;: &quot;login.username&quot;,
+      &quot;old_id&quot;: &quot;login-username&quot;,
+      &quot;expected_id&quot;: &quot;text_user&quot;,
+      &quot;new_id&quot;: &quot;text_user&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2124,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;login.password&quot;,
+      &quot;old_id&quot;: &quot;login-password&quot;,
+      &quot;expected_id&quot;: &quot;text_pass&quot;,
+      &quot;new_id&quot;: &quot;text_pass&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2062,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;login.button&quot;,
+      &quot;old_id&quot;: &quot;login-btn&quot;,
+      &quot;expected_id&quot;: &quot;btn-signin&quot;,
+      &quot;new_id&quot;: &quot;btn-signin&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2092,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;login.forgot&quot;,
+      &quot;old_id&quot;: &quot;login-forgot&quot;,
+      &quot;expected_id&quot;: &quot;lnk-reset-pw&quot;,
+      &quot;new_id&quot;: &quot;lnk-reset-pw&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 36.8, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2097,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;login.message&quot;,
+      &quot;old_id&quot;: &quot;login-msg&quot;,
+      &quot;expected_id&quot;: &quot;status-banner&quot;,
+      &quot;new_id&quot;: &quot;status-banner&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2118,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;register.name&quot;,
+      &quot;old_id&quot;: &quot;reg-fullname&quot;,
+      &quot;expected_id&quot;: &quot;signup-name&quot;,
+      &quot;new_id&quot;: &quot;signup-name&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2055,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;register.email&quot;,
+      &quot;old_id&quot;: &quot;reg-email&quot;,
+      &quot;expected_id&quot;: &quot;signup-email&quot;,
+      &quot;new_id&quot;: &quot;signup-email&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2061,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;register.password&quot;,
+      &quot;old_id&quot;: &quot;reg-password&quot;,
+      &quot;expected_id&quot;: &quot;signup-pass&quot;,
+      &quot;new_id&quot;: &quot;signup-pass&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 67.2, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2064,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;register.confirm&quot;,
+      &quot;old_id&quot;: &quot;reg-confirm&quot;,
+      &quot;expected_id&quot;: &quot;signup-pass2&quot;,
+      &quot;new_id&quot;: &quot;signup-pass2&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2052,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;register.terms&quot;,
+      &quot;old_id&quot;: &quot;reg-terms&quot;,
+      &quot;expected_id&quot;: &quot;agree-checkbox&quot;,
+      &quot;new_id&quot;: &quot;agree-checkbox&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2096,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;register.submit&quot;,
+      &quot;old_id&quot;: &quot;reg-submit&quot;,
+      &quot;expected_id&quot;: &quot;btn-create-account&quot;,
+      &quot;new_id&quot;: &quot;btn-create-account&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2093,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.title&quot;,
+      &quot;old_id&quot;: &quot;dash-title&quot;,
+      &quot;expected_id&quot;: &quot;page-heading&quot;,
+      &quot;new_id&quot;: &quot;page-heading&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2102,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.edit_profile&quot;,
+      &quot;old_id&quot;: &quot;edit-profile&quot;,
+      &quot;expected_id&quot;: &quot;btn-edit-1&quot;,
+      &quot;new_id&quot;: &quot;btn-edit-1&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 79.7, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2103,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.edit_billing&quot;,
+      &quot;old_id&quot;: &quot;edit-billing&quot;,
+      &quot;expected_id&quot;: &quot;btn-edit-2&quot;,
+      &quot;new_id&quot;: &quot;btn-edit-2&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 46.4, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2114,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.country&quot;,
+      &quot;old_id&quot;: &quot;react-select-3-input&quot;,
+      &quot;expected_id&quot;: &quot;react-select-9-input&quot;,
+      &quot;new_id&quot;: &quot;react-select-9-input&quot;,
+      &quot;status&quot;: &quot;resolved&quot;,
+      &quot;method&quot;: &quot;id_template&quot;,
+      &quot;confidence&quot;: 99.0,
+      &quot;reason&quot;: &quot;counter-style id&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2117,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 1
+    },
+    {
+      &quot;key&quot;: &quot;dashboard.logout&quot;,
+      &quot;old_id&quot;: &quot;logout-btn&quot;,
+      &quot;expected_id&quot;: &quot;btn-signout&quot;,
+      &quot;new_id&quot;: &quot;btn-signout&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2109,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.home&quot;,
+      &quot;old_id&quot;: &quot;nav-home&quot;,
+      &quot;expected_id&quot;: &quot;top-home-link&quot;,
+      &quot;new_id&quot;: &quot;top-home-link&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 57.6, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2119,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.register&quot;,
+      &quot;old_id&quot;: &quot;nav-register&quot;,
+      &quot;expected_id&quot;: &quot;top-register-link&quot;,
+      &quot;new_id&quot;: &quot;top-register-link&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 21.2, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2085,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.email_alerts&quot;,
+      &quot;old_id&quot;: &quot;notify-email&quot;,
+      &quot;expected_id&quot;: &quot;chk-email-alerts&quot;,
+      &quot;new_id&quot;: &quot;chk-email-alerts&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 78.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2082,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.sms_alerts&quot;,
+      &quot;old_id&quot;: &quot;notify-sms&quot;,
+      &quot;expected_id&quot;: &quot;chk-sms-alerts&quot;,
+      &quot;new_id&quot;: &quot;chk-sms-alerts&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2070,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.save&quot;,
+      &quot;old_id&quot;: &quot;notif-save&quot;,
+      &quot;expected_id&quot;: &quot;btn-save-notifications&quot;,
+      &quot;new_id&quot;: &quot;btn-save-notifications&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 77.2, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2062,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.current_password&quot;,
+      &quot;old_id&quot;: &quot;sec-current-password&quot;,
+      &quot;expected_id&quot;: &quot;pw-old&quot;,
+      &quot;new_id&quot;: &quot;pw-old&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 68.1, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2072,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.new_password&quot;,
+      &quot;old_id&quot;: &quot;sec-new-password&quot;,
+      &quot;expected_id&quot;: &quot;pw-new&quot;,
+      &quot;new_id&quot;: &quot;pw-new&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2096,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.security_save&quot;,
+      &quot;old_id&quot;: &quot;sec-save&quot;,
+      &quot;expected_id&quot;: &quot;btn-save-security&quot;,
+      &quot;new_id&quot;: &quot;btn-save-security&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 51.1, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2096,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.more_actions&quot;,
+      &quot;old_id&quot;: &quot;account-menu-btn&quot;,
+      &quot;expected_id&quot;: &quot;more-actions-toggle&quot;,
+      &quot;new_id&quot;: &quot;more-actions-toggle&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 54.2, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2106,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.export_data&quot;,
+      &quot;old_id&quot;: &quot;export-data&quot;,
+      &quot;expected_id&quot;: &quot;lnk-export&quot;,
+      &quot;new_id&quot;: &quot;lnk-export&quot;,
+      &quot;status&quot;: &quot;healed&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2097,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 2
+    },
+    {
+      &quot;key&quot;: &quot;settings.delete_account&quot;,
+      &quot;old_id&quot;: &quot;delete-account&quot;,
+      &quot;expected_id&quot;: &quot;btn-remove-account&quot;,
+      &quot;new_id&quot;: &quot;btn-remove-account&quot;,
+      &quot;status&quot;: &quot;needs_review&quot;,
+      &quot;method&quot;: &quot;fingerprint&quot;,
+      &quot;confidence&quot;: 100.0,
+      &quot;reason&quot;: &quot;score 100.0, runner-up 0.0, discriminator misses 0; needs approval (on the deny-list)&quot;,
+      &quot;llm_tokens&quot;: 0,
+      &quot;ms&quot;: 2084,
+      &quot;version_before&quot;: 1,
+      &quot;version_after&quot;: 1
+    }
+  ],
+  &quot;llm&quot;: {
+    &quot;enabled&quot;: false,
+    &quot;model&quot;: null,
+    &quot;calls&quot;: 0,
+    &quot;prompt_tokens&quot;: 0,
+    &quot;completion_tokens&quot;: 0,
+    &quot;error&quot;: null
+  }
+}</pre></details></div></body></html>
