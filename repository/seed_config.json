@@ -1,0 +1,51 @@
+{
+  "pages": {
+    "login": {
+      "file": "login.html",
+      "elements": {
+        "username": "txt_user",
+        "password": "txt_pass",
+        "button": "btn-signin",
+        "forgot": "lnk-reset-pw",
+        "message": "status-banner"
+      }
+    },
+    "register": {
+      "file": "register.html",
+      "elements": {
+        "name": "signup-name",
+        "email": "signup-email",
+        "password": "signup-pass",
+        "confirm": "signup-pass2",
+        "terms": "agree-checkbox",
+        "submit": "btn-create-account"
+      }
+    },
+    "dashboard": {
+      "file": "dashboard.html",
+      "elements": {
+        "title": "page-heading",
+        "edit_profile": "btn-edit-1",
+        "edit_billing": "btn-edit-2",
+        "country": "react-select-9-input",
+        "logout": "btn-signout"
+      }
+    },
+    "settings": {
+      "elements": {
+        "home": "top-home-link",
+        "register": "top-register-link",
+        "email_alerts": "chk-email-alerts",
+        "sms_alerts": "chk-sms-alerts",
+        "save": "btn-save-notifications",
+        "current_password": "pw-old",
+        "new_password": "pw-new",
+        "security_save": "btn-save-security",
+        "more_actions": "more-actions-toggle",
+        "export_data": "lnk-export",
+        "delete_account": "btn-remove-account"
+      },
+      "url": "file:///C:/Users/vskba/Documents/Lavanya_technical/SELF_HEALING_FRAMEWORK/sample_app/site/v1/settings.html"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "pages": {
+    "login": {
+      "file": "login.html",
+      "elements": {
+        "username": "login-username",
+        "password": "login-password",
+        "button": "login-btn",
+        "forgot": "login-forgot",
+        "message": "login-msg"
+      }
+    },
+    "register": {
+      "file": "register.html",
+      "elements": {
+        "name": "reg-fullname",
+        "email": "reg-email",
+        "password": "reg-password",
+        "confirm": "reg-confirm",
+        "terms": "reg-terms",
+        "submit": "reg-submit"
+      }
+    },
+    "dashboard": {
+      "file": "dashboard.html",
+      "elements": {
+        "title": "dash-title",
+        "edit_profile": "edit-profile",
+        "edit_billing": "edit-billing",
+        "country": "react-select-3-input",
+        "logout": "logout-btn"
+      }
+    },
+    "settings": {
+      "file": "settings.html",
+      "elements": {
+        "home": "nav-home",
+        "register": "nav-register",
+        "email_alerts": "notify-email",
+        "sms_alerts": "notify-sms",
+        "save": "notif-save",
+        "current_password": "sec-current-password",
+        "new_password": "sec-new-password",
+        "security_save": "sec-save",
+        "more_actions": "account-menu-btn",
+        "export_data": "export-data",
+        "delete_account": "delete-account"
+      }
+    }
+  }
+}

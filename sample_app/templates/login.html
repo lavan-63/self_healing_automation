@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Login</title></head>
+<body>
+<header>
+  <nav id="{{nav_main}}" class="top-nav">
+    <a id="{{nav_home}}" href="dashboard.html" class="nav-link">Home</a>
+    <a id="{{nav_register}}" href="register.html" class="nav-link">Register</a>
+  </nav>
+</header>
+<main>
+  <form id="{{login_form}}" class="auth-form">
+    <h1>Sign in</h1>
+    <label for="{{login_user}}">Username</label>
+    <input id="{{login_user}}" name="username" type="text" placeholder="Enter username" class="field">
+    <label for="{{login_pass}}">Password</label>
+    <input id="{{login_pass}}" name="password" type="password" placeholder="Enter password" class="field">
+    <button id="{{login_btn}}" type="submit" class="btn primary">Login</button>
+    <a id="{{login_forgot}}" href="#forgot" class="link">Forgot password?</a>
+    <p id="{{login_msg}}" class="msg" hidden></p>
+  </form>
+</main>
+<script>
+document.getElementById('{{login_form}}').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var m = document.getElementById('{{login_msg}}');
+  m.textContent = 'Welcome, ' + document.getElementById('{{login_user}}').value;
+  m.hidden = false;
+});
+</script>
+</body>
+</html>

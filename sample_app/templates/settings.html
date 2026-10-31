@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Settings</title></head>
+<body>
+<header>
+  <nav id="{{nav_main}}" class="top-nav">
+    <a id="{{nav_home}}" href="dashboard.html" class="nav-link">Home</a>
+    <a id="{{nav_register}}" href="register.html" class="nav-link">Register</a>
+  </nav>
+</header>
+<main>
+  <h1 id="{{set_title}}" class="page-title">Settings</h1>
+
+  <section class="card">
+    <h2>Notifications</h2>
+    <div class="row">
+      <input id="{{set_email_cb}}" name="notify_email" type="checkbox">
+      <label for="{{set_email_cb}}">Email alerts</label>
+    </div>
+    <div class="row">
+      <input id="{{set_sms_cb}}" name="notify_sms" type="checkbox">
+      <label for="{{set_sms_cb}}">SMS alerts</label>
+    </div>
+    <button id="{{set_notif_save}}" type="button" class="btn primary">Save</button>
+  </section>
+
+  <section class="card">
+    <h2>Security</h2>
+    <label for="{{set_cur_pass}}">Current password</label>
+    <input id="{{set_cur_pass}}" name="current_password" type="password" placeholder="Current password" class="field">
+    <label for="{{set_new_pass}}">New password</label>
+    <input id="{{set_new_pass}}" name="new_password" type="password" placeholder="New password" class="field">
+    <button id="{{set_sec_save}}" type="button" class="btn primary">Save</button>
+  </section>
+
+  <section class="card">
+    <h2>Account</h2>
+    <button id="{{set_menu_btn}}" type="button" class="btn">More actions</button>
+    <ul id="{{set_menu_list}}" class="menu" hidden>
+      <li><a id="{{set_export}}" href="#export" class="menu-item">Export data</a></li>
+      <li><button id="{{set_delete}}" type="button" class="menu-item danger">Delete account</button></li>
+    </ul>
+  </section>
+</main>
+<script>
+document.getElementById('{{set_menu_btn}}').addEventListener('click', function () {
+  var m = document.getElementById('{{set_menu_list}}');
+  m.hidden = !m.hidden;
+});
+</script>
+</body>
+</html>

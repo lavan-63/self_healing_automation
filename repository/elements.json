@@ -1,0 +1,2303 @@
+{
+  "pages": {
+    "dashboard": {
+      "baseline_ids": [
+        "dash-title",
+        "edit-billing",
+        "edit-profile",
+        "logout-btn",
+        "nav-home",
+        "nav-main",
+        "nav-register",
+        "react-select-3-input"
+      ],
+      "elements": {
+        "country": {
+          "dynamic": true,
+          "fingerprint": {
+            "cls": "select",
+            "ctx": "Preferences",
+            "href": "",
+            "label": "Country",
+            "name": "country",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "",
+            "prev": "label|Country",
+            "role": "",
+            "tag": "select",
+            "text": "",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "select",
+                "ctx": "Preferences",
+                "href": "",
+                "label": "Country",
+                "name": "country",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "label|Country",
+                "role": "",
+                "tag": "select",
+                "text": "",
+                "type": ""
+              },
+              "id": "react-select-3-input",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            }
+          ],
+          "id": "react-select-9-input",
+          "stats": {
+            "heals": 0,
+            "runs": 0
+          },
+          "version": 1
+        },
+        "edit_billing": {
+          "fingerprint": {
+            "cls": "btn",
+            "ctx": "Billing",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "",
+            "prev": "p|Cards and invoices",
+            "role": "",
+            "tag": "button",
+            "text": "Edit",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn",
+                "ctx": "Billing",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "p|Cards and invoices",
+                "role": "",
+                "tag": "button",
+                "text": "Edit",
+                "type": "button"
+              },
+              "id": "edit-billing",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:33+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn",
+                "ctx": "Billing",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "p|Cards and invoices",
+                "role": "",
+                "tag": "button",
+                "text": "Edit",
+                "type": "button"
+              },
+              "id": "btn-edit-2",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 46.4, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-edit-2",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "edit_profile": {
+          "fingerprint": {
+            "cls": "btn",
+            "ctx": "Profile",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "",
+            "prev": "p|Name, email and avatar",
+            "role": "",
+            "tag": "button",
+            "text": "Edit",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn",
+                "ctx": "Profile",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "p|Name, email and avatar",
+                "role": "",
+                "tag": "button",
+                "text": "Edit",
+                "type": "button"
+              },
+              "id": "edit-profile",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:31+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn",
+                "ctx": "Profile",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "p|Name, email and avatar",
+                "role": "",
+                "tag": "button",
+                "text": "Edit",
+                "type": "button"
+              },
+              "id": "btn-edit-1",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 79.7, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-edit-1",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "logout": {
+          "fingerprint": {
+            "cls": "btn danger",
+            "ctx": "Account overview",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main"
+            ],
+            "placeholder": "",
+            "prev": "section.card|",
+            "role": "",
+            "tag": "button",
+            "text": "Logout",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn danger",
+                "ctx": "Account overview",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main"
+                ],
+                "placeholder": "",
+                "prev": "section.card|",
+                "role": "",
+                "tag": "button",
+                "text": "Logout",
+                "type": "button"
+              },
+              "id": "logout-btn",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:37+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn danger",
+                "ctx": "Account overview",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main"
+                ],
+                "placeholder": "",
+                "prev": "section.card|",
+                "role": "",
+                "tag": "button",
+                "text": "Logout",
+                "type": "button"
+              },
+              "id": "btn-signout",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-signout",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "title": {
+          "fingerprint": {
+            "cls": "page-title",
+            "ctx": "",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "section.card|Profile Name, email and avatar Edit",
+            "path": [
+              "body",
+              "main"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "h1",
+            "text": "Account overview",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "page-title",
+                "ctx": "",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "section.card|Profile Name, email and avatar Edit",
+                "path": [
+                  "body",
+                  "main"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "h1",
+                "text": "Account overview",
+                "type": ""
+              },
+              "id": "dash-title",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:29+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "page-title",
+                "ctx": "",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "section.card|Profile Name, email and avatar Edit",
+                "path": [
+                  "body",
+                  "main"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "h1",
+                "text": "Account overview",
+                "type": ""
+              },
+              "id": "page-heading",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "page-heading",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        }
+      },
+      "file": "dashboard.html"
+    },
+    "login": {
+      "baseline_ids": [
+        "login-btn",
+        "login-forgot",
+        "login-form",
+        "login-msg",
+        "login-password",
+        "login-username",
+        "nav-home",
+        "nav-main",
+        "nav-register"
+      ],
+      "elements": {
+        "button": {
+          "fingerprint": {
+            "cls": "btn primary",
+            "ctx": "Sign in",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "a.link|Forgot password?",
+            "path": [
+              "body",
+              "main",
+              "form.auth-form"
+            ],
+            "placeholder": "",
+            "prev": "input.field|",
+            "role": "",
+            "tag": "button",
+            "text": "Login",
+            "type": "submit"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "a.link|Forgot password?",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "",
+                "prev": "input.field|",
+                "role": "",
+                "tag": "button",
+                "text": "Login",
+                "type": "submit"
+              },
+              "id": "login-btn",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:10+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "a.link|Forgot password?",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "",
+                "prev": "input.field|",
+                "role": "",
+                "tag": "button",
+                "text": "Login",
+                "type": "submit"
+              },
+              "id": "btn-signin",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-signin",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "forgot": {
+          "fingerprint": {
+            "cls": "link",
+            "ctx": "Sign in",
+            "href": "#forgot",
+            "label": "",
+            "name": "",
+            "next": "p.msg|",
+            "path": [
+              "body",
+              "main",
+              "form.auth-form"
+            ],
+            "placeholder": "",
+            "prev": "button.btn.primary|Login",
+            "role": "",
+            "tag": "a",
+            "text": "Forgot password?",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "link",
+                "ctx": "Sign in",
+                "href": "#forgot",
+                "label": "",
+                "name": "",
+                "next": "p.msg|",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "",
+                "prev": "button.btn.primary|Login",
+                "role": "",
+                "tag": "a",
+                "text": "Forgot password?",
+                "type": ""
+              },
+              "id": "login-forgot",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:12+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "link",
+                "ctx": "Sign in",
+                "href": "#forgot",
+                "label": "",
+                "name": "",
+                "next": "p.msg|",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "",
+                "prev": "button.btn.primary|Login",
+                "role": "",
+                "tag": "a",
+                "text": "Forgot password?",
+                "type": ""
+              },
+              "id": "lnk-reset-pw",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 36.8, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "lnk-reset-pw",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "message": {
+          "fingerprint": {
+            "cls": "msg",
+            "ctx": "Sign in",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "form.auth-form"
+            ],
+            "placeholder": "",
+            "prev": "a.link|Forgot password?",
+            "role": "",
+            "tag": "p",
+            "text": "",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "msg",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "",
+                "prev": "a.link|Forgot password?",
+                "role": "",
+                "tag": "p",
+                "text": "",
+                "type": ""
+              },
+              "id": "login-msg",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:14+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "msg",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "",
+                "prev": "a.link|Forgot password?",
+                "role": "",
+                "tag": "p",
+                "text": "",
+                "type": ""
+              },
+              "id": "status-banner",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "status-banner",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "password": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Sign in",
+            "href": "",
+            "label": "Password",
+            "name": "password",
+            "next": "button.btn.primary|Login",
+            "path": [
+              "body",
+              "main",
+              "form.auth-form"
+            ],
+            "placeholder": "Enter password",
+            "prev": "label|Password",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "password"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "Password",
+                "name": "password",
+                "next": "button.btn.primary|Login",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "Enter password",
+                "prev": "label|Password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "login-password",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:08+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "Password",
+                "name": "password",
+                "next": "button.btn.primary|Login",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "Enter password",
+                "prev": "label|Password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "text_pass",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "text_pass",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "username": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Sign in",
+            "href": "",
+            "label": "Username",
+            "name": "username",
+            "next": "label|Password",
+            "path": [
+              "body",
+              "main",
+              "form.auth-form"
+            ],
+            "placeholder": "Enter username",
+            "prev": "label|Username",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "text"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "Username",
+                "name": "username",
+                "next": "label|Password",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "Enter username",
+                "prev": "label|Username",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "text"
+              },
+              "id": "login-username",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:06+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Sign in",
+                "href": "",
+                "label": "Username",
+                "name": "username",
+                "next": "label|Password",
+                "path": [
+                  "body",
+                  "main",
+                  "form.auth-form"
+                ],
+                "placeholder": "Enter username",
+                "prev": "label|Username",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "text"
+              },
+              "id": "text_user",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "text_user",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        }
+      },
+      "file": "login.html"
+    },
+    "register": {
+      "baseline_ids": [
+        "nav-home",
+        "nav-main",
+        "nav-register",
+        "reg-confirm",
+        "reg-email",
+        "reg-form",
+        "reg-fullname",
+        "reg-password",
+        "reg-submit",
+        "reg-terms"
+      ],
+      "elements": {
+        "confirm": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Create account",
+            "href": "",
+            "label": "Confirm password",
+            "name": "confirm",
+            "next": "div.terms-row|I accept the terms",
+            "path": [
+              "body",
+              "main",
+              "form.signup-form"
+            ],
+            "placeholder": "Confirm password",
+            "prev": "label|Confirm password",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "password"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Confirm password",
+                "name": "confirm",
+                "next": "div.terms-row|I accept the terms",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "Confirm password",
+                "prev": "label|Confirm password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "reg-confirm",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:22+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Confirm password",
+                "name": "confirm",
+                "next": "div.terms-row|I accept the terms",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "Confirm password",
+                "prev": "label|Confirm password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "signup-pass2",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "signup-pass2",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "email": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Create account",
+            "href": "",
+            "label": "Email",
+            "name": "email",
+            "next": "label|Password",
+            "path": [
+              "body",
+              "main",
+              "form.signup-form"
+            ],
+            "placeholder": "you@example.com",
+            "prev": "label|Email",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "email"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Email",
+                "name": "email",
+                "next": "label|Password",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "you@example.com",
+                "prev": "label|Email",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "email"
+              },
+              "id": "reg-email",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:18+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Email",
+                "name": "email",
+                "next": "label|Password",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "you@example.com",
+                "prev": "label|Email",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "email"
+              },
+              "id": "signup-email",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "signup-email",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "name": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Create account",
+            "href": "",
+            "label": "Full name",
+            "name": "fullname",
+            "next": "label|Email",
+            "path": [
+              "body",
+              "main",
+              "form.signup-form"
+            ],
+            "placeholder": "Your full name",
+            "prev": "label|Full name",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "text"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Full name",
+                "name": "fullname",
+                "next": "label|Email",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "Your full name",
+                "prev": "label|Full name",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "text"
+              },
+              "id": "reg-fullname",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:16+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Full name",
+                "name": "fullname",
+                "next": "label|Email",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "Your full name",
+                "prev": "label|Full name",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "text"
+              },
+              "id": "signup-name",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "signup-name",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "password": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Create account",
+            "href": "",
+            "label": "Password",
+            "name": "password",
+            "next": "label|Confirm password",
+            "path": [
+              "body",
+              "main",
+              "form.signup-form"
+            ],
+            "placeholder": "Password",
+            "prev": "label|Password",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "password"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Password",
+                "name": "password",
+                "next": "label|Confirm password",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "Password",
+                "prev": "label|Password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "reg-password",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:20+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Create account",
+                "href": "",
+                "label": "Password",
+                "name": "password",
+                "next": "label|Confirm password",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "Password",
+                "prev": "label|Password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "signup-pass",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 67.2, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "signup-pass",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "submit": {
+          "fingerprint": {
+            "cls": "btn primary",
+            "ctx": "Create account",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "form.signup-form"
+            ],
+            "placeholder": "",
+            "prev": "div.terms-row|I accept the terms",
+            "role": "",
+            "tag": "button",
+            "text": "Create account",
+            "type": "submit"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Create account",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "",
+                "prev": "div.terms-row|I accept the terms",
+                "role": "",
+                "tag": "button",
+                "text": "Create account",
+                "type": "submit"
+              },
+              "id": "reg-submit",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:27+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Create account",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form"
+                ],
+                "placeholder": "",
+                "prev": "div.terms-row|I accept the terms",
+                "role": "",
+                "tag": "button",
+                "text": "Create account",
+                "type": "submit"
+              },
+              "id": "btn-create-account",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-create-account",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "terms": {
+          "fingerprint": {
+            "cls": "",
+            "ctx": "Create account",
+            "href": "",
+            "label": "I accept the terms",
+            "name": "terms",
+            "next": "label|I accept the terms",
+            "path": [
+              "body",
+              "main",
+              "form.signup-form",
+              "div.terms-row"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "checkbox"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:03+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "",
+                "ctx": "Create account",
+                "href": "",
+                "label": "I accept the terms",
+                "name": "terms",
+                "next": "label|I accept the terms",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form",
+                  "div.terms-row"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "checkbox"
+              },
+              "id": "reg-terms",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:24+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "",
+                "ctx": "Create account",
+                "href": "",
+                "label": "I accept the terms",
+                "name": "terms",
+                "next": "label|I accept the terms",
+                "path": [
+                  "body",
+                  "main",
+                  "form.signup-form",
+                  "div.terms-row"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "checkbox"
+              },
+              "id": "agree-checkbox",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "agree-checkbox",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        }
+      },
+      "file": "register.html"
+    },
+    "settings": {
+      "baseline_ids": [
+        "account-menu",
+        "account-menu-btn",
+        "delete-account",
+        "export-data",
+        "nav-home",
+        "nav-main",
+        "nav-register",
+        "notif-save",
+        "notify-email",
+        "notify-sms",
+        "sec-current-password",
+        "sec-new-password",
+        "sec-save",
+        "settings-title"
+      ],
+      "elements": {
+        "current_password": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Security",
+            "href": "",
+            "label": "Current password",
+            "name": "current_password",
+            "next": "label|New password",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "Current password",
+            "prev": "label|Current password",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "password"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Security",
+                "href": "",
+                "label": "Current password",
+                "name": "current_password",
+                "next": "label|New password",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "Current password",
+                "prev": "label|Current password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "sec-current-password",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:50+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Security",
+                "href": "",
+                "label": "Current password",
+                "name": "current_password",
+                "next": "label|New password",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "Current password",
+                "prev": "label|Current password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "pw-old",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 68.1, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "pw-old",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "delete_account": {
+          "fingerprint": {
+            "cls": "menu-item danger",
+            "ctx": "Account",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card",
+              "ul.menu",
+              "li"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "button",
+            "text": "Delete account",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "menu-item danger",
+                "ctx": "Account",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "ul.menu",
+                  "li"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "button",
+                "text": "Delete account",
+                "type": "button"
+              },
+              "id": "delete-account",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            }
+          ],
+          "id": "delete-account",
+          "pending": {
+            "at": "2026-10-31T20:17:00+00:00",
+            "confidence": 100.0,
+            "fingerprint": {
+              "cls": "menu-item danger",
+              "ctx": "Account",
+              "href": "",
+              "label": "",
+              "name": "",
+              "next": "",
+              "path": [
+                "body",
+                "main",
+                "section.card",
+                "ul.menu",
+                "li"
+              ],
+              "placeholder": "",
+              "prev": "",
+              "role": "",
+              "tag": "button",
+              "text": "Delete account",
+              "type": "button"
+            },
+            "id": "btn-remove-account",
+            "method": "fingerprint",
+            "reason": "score 100.0, runner-up 0.0, discriminator misses 0; needs approval (on the deny-list)"
+          },
+          "stats": {
+            "heals": 0,
+            "runs": 0
+          },
+          "version": 1
+        },
+        "email_alerts": {
+          "fingerprint": {
+            "cls": "",
+            "ctx": "Notifications",
+            "href": "",
+            "label": "Email alerts",
+            "name": "notify_email",
+            "next": "label|Email alerts",
+            "path": [
+              "body",
+              "main",
+              "section.card",
+              "div.row"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "checkbox"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "",
+                "ctx": "Notifications",
+                "href": "",
+                "label": "Email alerts",
+                "name": "notify_email",
+                "next": "label|Email alerts",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "div.row"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "checkbox"
+              },
+              "id": "notify-email",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:43+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "",
+                "ctx": "Notifications",
+                "href": "",
+                "label": "Email alerts",
+                "name": "notify_email",
+                "next": "label|Email alerts",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "div.row"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "checkbox"
+              },
+              "id": "chk-email-alerts",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 78.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "chk-email-alerts",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "export_data": {
+          "fingerprint": {
+            "cls": "menu-item",
+            "ctx": "Account",
+            "href": "#export",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card",
+              "ul.menu",
+              "li"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "a",
+            "text": "Export data",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "menu-item",
+                "ctx": "Account",
+                "href": "#export",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "ul.menu",
+                  "li"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "a",
+                "text": "Export data",
+                "type": ""
+              },
+              "id": "export-data",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:58+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "menu-item",
+                "ctx": "Account",
+                "href": "#export",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "ul.menu",
+                  "li"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "a",
+                "text": "Export data",
+                "type": ""
+              },
+              "id": "lnk-export",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "lnk-export",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "home": {
+          "fingerprint": {
+            "cls": "nav-link",
+            "ctx": "Settings",
+            "href": "dashboard.html",
+            "label": "",
+            "name": "",
+            "next": "a.nav-link|Register",
+            "path": [
+              "body",
+              "header",
+              "nav.top-nav"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "a",
+            "text": "Home",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "nav-link",
+                "ctx": "Settings",
+                "href": "dashboard.html",
+                "label": "",
+                "name": "",
+                "next": "a.nav-link|Register",
+                "path": [
+                  "body",
+                  "header",
+                  "nav.top-nav"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "a",
+                "text": "Home",
+                "type": ""
+              },
+              "id": "nav-home",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:39+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "nav-link",
+                "ctx": "Settings",
+                "href": "dashboard.html",
+                "label": "",
+                "name": "",
+                "next": "a.nav-link|Register",
+                "path": [
+                  "body",
+                  "header",
+                  "nav.top-nav"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "a",
+                "text": "Home",
+                "type": ""
+              },
+              "id": "top-home-link",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 57.6, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "top-home-link",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "more_actions": {
+          "fingerprint": {
+            "cls": "btn",
+            "ctx": "Account",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "ul.menu|",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "",
+            "prev": "h2|Account",
+            "role": "",
+            "tag": "button",
+            "text": "More actions",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn",
+                "ctx": "Account",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "ul.menu|",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "h2|Account",
+                "role": "",
+                "tag": "button",
+                "text": "More actions",
+                "type": "button"
+              },
+              "id": "account-menu-btn",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:56+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn",
+                "ctx": "Account",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "ul.menu|",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "h2|Account",
+                "role": "",
+                "tag": "button",
+                "text": "More actions",
+                "type": "button"
+              },
+              "id": "more-actions-toggle",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 54.2, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "more-actions-toggle",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "new_password": {
+          "fingerprint": {
+            "cls": "field",
+            "ctx": "Security",
+            "href": "",
+            "label": "New password",
+            "name": "new_password",
+            "next": "button.btn.primary|Save",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "New password",
+            "prev": "label|New password",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "password"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Security",
+                "href": "",
+                "label": "New password",
+                "name": "new_password",
+                "next": "button.btn.primary|Save",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "New password",
+                "prev": "label|New password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "sec-new-password",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:52+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "field",
+                "ctx": "Security",
+                "href": "",
+                "label": "New password",
+                "name": "new_password",
+                "next": "button.btn.primary|Save",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "New password",
+                "prev": "label|New password",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "password"
+              },
+              "id": "pw-new",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "pw-new",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "register": {
+          "fingerprint": {
+            "cls": "nav-link",
+            "ctx": "Settings",
+            "href": "register.html",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "header",
+              "nav.top-nav"
+            ],
+            "placeholder": "",
+            "prev": "a.nav-link|Home",
+            "role": "",
+            "tag": "a",
+            "text": "Register",
+            "type": ""
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "nav-link",
+                "ctx": "Settings",
+                "href": "register.html",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "header",
+                  "nav.top-nav"
+                ],
+                "placeholder": "",
+                "prev": "a.nav-link|Home",
+                "role": "",
+                "tag": "a",
+                "text": "Register",
+                "type": ""
+              },
+              "id": "nav-register",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:41+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "nav-link",
+                "ctx": "Settings",
+                "href": "register.html",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "header",
+                  "nav.top-nav"
+                ],
+                "placeholder": "",
+                "prev": "a.nav-link|Home",
+                "role": "",
+                "tag": "a",
+                "text": "Register",
+                "type": ""
+              },
+              "id": "top-register-link",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 21.2, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "top-register-link",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "save": {
+          "fingerprint": {
+            "cls": "btn primary",
+            "ctx": "Notifications",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "",
+            "prev": "div.row|SMS alerts",
+            "role": "",
+            "tag": "button",
+            "text": "Save",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Notifications",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "div.row|SMS alerts",
+                "role": "",
+                "tag": "button",
+                "text": "Save",
+                "type": "button"
+              },
+              "id": "notif-save",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:48+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Notifications",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "div.row|SMS alerts",
+                "role": "",
+                "tag": "button",
+                "text": "Save",
+                "type": "button"
+              },
+              "id": "btn-save-notifications",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 77.2, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-save-notifications",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "security_save": {
+          "fingerprint": {
+            "cls": "btn primary",
+            "ctx": "Security",
+            "href": "",
+            "label": "",
+            "name": "",
+            "next": "",
+            "path": [
+              "body",
+              "main",
+              "section.card"
+            ],
+            "placeholder": "",
+            "prev": "input.field|",
+            "role": "",
+            "tag": "button",
+            "text": "Save",
+            "type": "button"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Security",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "input.field|",
+                "role": "",
+                "tag": "button",
+                "text": "Save",
+                "type": "button"
+              },
+              "id": "sec-save",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:54+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "btn primary",
+                "ctx": "Security",
+                "href": "",
+                "label": "",
+                "name": "",
+                "next": "",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card"
+                ],
+                "placeholder": "",
+                "prev": "input.field|",
+                "role": "",
+                "tag": "button",
+                "text": "Save",
+                "type": "button"
+              },
+              "id": "btn-save-security",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 51.1, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "btn-save-security",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        },
+        "sms_alerts": {
+          "fingerprint": {
+            "cls": "",
+            "ctx": "Notifications",
+            "href": "",
+            "label": "SMS alerts",
+            "name": "notify_sms",
+            "next": "label|SMS alerts",
+            "path": [
+              "body",
+              "main",
+              "section.card",
+              "div.row"
+            ],
+            "placeholder": "",
+            "prev": "",
+            "role": "",
+            "tag": "input",
+            "text": "",
+            "type": "checkbox"
+          },
+          "history": [
+            {
+              "at": "2026-10-31T20:16:04+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "",
+                "ctx": "Notifications",
+                "href": "",
+                "label": "SMS alerts",
+                "name": "notify_sms",
+                "next": "label|SMS alerts",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "div.row"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "checkbox"
+              },
+              "id": "notify-sms",
+              "method": "seed",
+              "reason": "baseline capture",
+              "version": 1
+            },
+            {
+              "at": "2026-10-31T20:16:46+00:00",
+              "confidence": 100.0,
+              "fingerprint": {
+                "cls": "",
+                "ctx": "Notifications",
+                "href": "",
+                "label": "SMS alerts",
+                "name": "notify_sms",
+                "next": "label|SMS alerts",
+                "path": [
+                  "body",
+                  "main",
+                  "section.card",
+                  "div.row"
+                ],
+                "placeholder": "",
+                "prev": "",
+                "role": "",
+                "tag": "input",
+                "text": "",
+                "type": "checkbox"
+              },
+              "id": "chk-sms-alerts",
+              "method": "fingerprint",
+              "reason": "score 100.0, runner-up 0.0, discriminator misses 0",
+              "version": 2
+            }
+          ],
+          "id": "chk-sms-alerts",
+          "stats": {
+            "heals": 1,
+            "runs": 0
+          },
+          "version": 2
+        }
+      },
+      "file": "settings.html"
+    }
+  },
+  "schema": 1
+}

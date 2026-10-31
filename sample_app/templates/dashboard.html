@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Dashboard</title></head>
+<body>
+<header>
+  <nav id="{{nav_main}}" class="top-nav">
+    <a id="{{nav_home}}" href="dashboard.html" class="nav-link">Home</a>
+    <a id="{{nav_register}}" href="register.html" class="nav-link">Register</a>
+  </nav>
+</header>
+<main>
+  <h1 id="{{dash_title}}" class="page-title">Account overview</h1>
+
+  <section class="card">
+    <h2>Profile</h2>
+    <p>Name, email and avatar</p>
+    <button id="{{dash_edit_profile}}" type="button" class="btn">Edit</button>
+  </section>
+
+  <section class="card">
+    <h2>Billing</h2>
+    <p>Cards and invoices</p>
+    <button id="{{dash_edit_billing}}" type="button" class="btn">Edit</button>
+  </section>
+
+  <section class="card">
+    <h2>Preferences</h2>
+    <label for="{{dash_country}}">Country</label>
+    <select id="{{dash_country}}" name="country" class="select">
+      <option>India</option>
+      <option>USA</option>
+    </select>
+  </section>
+
+  <button id="{{dash_logout}}" type="button" class="btn danger">Logout</button>
+</main>
+</body>
+</html>

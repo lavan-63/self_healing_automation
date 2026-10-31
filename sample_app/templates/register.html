@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Register</title></head>
+<body>
+<header>
+  <nav id="{{nav_main}}" class="top-nav">
+    <a id="{{nav_home}}" href="dashboard.html" class="nav-link">Home</a>
+    <a id="{{nav_register}}" href="register.html" class="nav-link">Register</a>
+  </nav>
+</header>
+<main>
+  <form id="{{reg_form}}" class="signup-form">
+    <h1>Create account</h1>
+    <label for="{{reg_name}}">Full name</label>
+    <input id="{{reg_name}}" name="fullname" type="text" placeholder="Your full name" class="field">
+    <label for="{{reg_email}}">Email</label>
+    <input id="{{reg_email}}" name="email" type="email" placeholder="you@example.com" class="field">
+    <label for="{{reg_pass}}">Password</label>
+    <input id="{{reg_pass}}" name="password" type="password" placeholder="Password" class="field">
+    <label for="{{reg_confirm}}">Confirm password</label>
+    <input id="{{reg_confirm}}" name="confirm" type="password" placeholder="Confirm password" class="field">
+    <div class="terms-row">
+      <input id="{{reg_terms}}" name="terms" type="checkbox">
+      <label for="{{reg_terms}}">I accept the terms</label>
+    </div>
+    <button id="{{reg_btn}}" type="submit" class="btn primary">Create account</button>
+  </form>
+</main>
+</body>
+</html>
